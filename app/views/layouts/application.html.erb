@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paintball</title>
+  <%= stylesheet_link_tag    "style", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+
+<body>
+
+  <div class="header">
+  <div class="shell">
+    <div id="navigation">
+      <ul>
+        <li><span><%= link_to "главная", root_path %></span></li>
+        <li><span><%= link_to "о нас" %></span></li>
+        <li><span><%= link_to "галлерея", albums_path %></span></li>
+        <li><span><%= link_to "контакты" %></span></li>
+        <% if !user_signed_in? %>
+          <li><span><%= link_to "войти", new_user_session_path %></span></li>
+          <li><span><%= link_to "регистрация", new_user_registration_path %></span></li>
+        <% else %>
+          <li><span><%= link_to "выход", destroy_user_session_path, :method => :delete  %></span></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="cl">&nbsp;</div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="container">
+    <div class="slider">
+      <div class="slider-holder">
+        <ul>
+          <li><img src="/assets/slide.gif" alt="" /></li>
+          <li><img src="/assets/slide.gif" alt="" /></li>
+          <li><img src="/assets/slide.gif" alt="" /></li>
+          <li><img src="/assets/slide.gif" alt="" /></li>
+        </ul>
+      </div>
+      <a href="" class="slider-prev notext">prev</a> <a href="/" class="slider-next notext">next</a>
+      <div class="slider-nav">
+        <ul>
+          <li><a href="/">1</a></li>
+          <li><a href="/">2</a></li>
+          <li><a href="/" class="active">3</a></li>
+          <li><a href="/">4</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main">
+     <%= yield %>
+        <div class="cl">&nbsp;</div>
+      </div>
+      
+     
+      <div class="cl">&nbsp;</div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="shell">
+    
+    <div style="clear:both;"></div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

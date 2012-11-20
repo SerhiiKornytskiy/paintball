@@ -1,0 +1,16 @@
+<h2>Комментарии:</h2>
+
+<% @comments.each do |c| %>
+
+    <% if @post.id == c.post_id  %>
+      <div class = "comment"> <%= c.content %> <br> <%= time_ago_in_words(c.created_at)  %> <br> 
+        <% if current_user %>
+        <% if current_user.id == c.user_id or current_user.admin? %>
+          <div> 
+            <%= link_to "Удалить", c, :method => :delete %>
+          </div>
+        <% end %>
+        <% end %>
+        </div>
+     <% end %>
+<% end %>

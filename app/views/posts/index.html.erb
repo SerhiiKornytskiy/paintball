@@ -1,0 +1,31 @@
+
+    
+    <% @posts.each_slice(3) do |slice| %>
+      <div class = "cols">
+       
+        <% slice.each do |post| %>
+
+          <% if post.user_id == @admin_user.id %>
+          <div class = "col">
+          <div class = "post">
+          <h2><%= link_to post.title, post_path(post.id)%><%= " (видео)" if post.code %></h2>
+          <p><%= post.body %></p>
+          <% end %>
+          <% if current_user.try(:admin?) %>
+          <div class = "edit"> 
+            <%= link_to "редактировать |", edit_post_path(post) %> 
+            <%= link_to " удалить", post , :method => :delete %> 
+          </div>
+          <% end %>
+
+          </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
+ <% if current_user && current_user.try(:admin?) %> 
+ <br>
+   <div style = "clear: both;"> <%= button_to "Создать сообщение" %> </div>
+ <% end %>

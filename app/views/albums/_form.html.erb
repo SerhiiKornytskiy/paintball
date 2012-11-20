@@ -1,0 +1,8 @@
+<%= form_for @album do |f| %>
+  
+  <p>
+    <%= f.label "Название альбома" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit "Создать альбом" %></p>
+<% end %>

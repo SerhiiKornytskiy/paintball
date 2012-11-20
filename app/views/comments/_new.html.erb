@@ -1,0 +1,11 @@
+
+
+  <%= form_for @comment do |f| %>
+    <div>
+      <%= h f.text_area :content %> 
+    </div>
+      <%= h f.hidden_field :post_id %> 
+      
+      <%= f.submit "комментировать" %>
+   
+  <% end %>

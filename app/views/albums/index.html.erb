@@ -1,0 +1,11 @@
+<h2><%= "Альбомы:" %></h2>
+
+<% for album in @albums %>
+  <div class="album">
+    <h2><%= link_to "#{album.name } (Фотографий: #{album.photos.size})", album %>  </h2>
+  </div>
+<% end %>
+
+<% if current_user && current_user.admin? %>
+  <p><%= link_to "Новый альбом", new_album_path %></p>
+<%end%>

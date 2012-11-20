@@ -1,0 +1,5 @@
+<h2><%= "Новый альбом" %></h2>
+
+<%= render 'form' if current_user && current_user.admin? %>
+
+<p><%= link_to "назад", albums_path %></p>

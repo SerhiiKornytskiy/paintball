@@ -1,0 +1,24 @@
+<h2><%= @post.title %></h2>
+<%  @comment.post_id = @post.id %>
+<%= @post.body %>
+<br>
+<% if @post.code %>
+  <div style = "margin: 10% 0 10% 10%;">
+    <iframe width="800" height="600" src="<%= 'http://www.youtube.com/embed/'+@post.code %>" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+<%end%>
+
+<div>	
+  <%= render "comments/show" %>
+</div>
+
+<% if current_user %>
+  <div>
+    <%= render "comments/new" %>
+  </div>  
+<% else %>
+  <div class = "comment"> 
+    Вы должны <%= link_to "войти", new_user_session_path %> или <%= link_to "загегистрироваться", new_user_registration_path %> чтобы оставлять комментарии.
+  </div>
+<% end %>

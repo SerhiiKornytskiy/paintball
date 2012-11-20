@@ -1,0 +1,20 @@
+<h2>Создать сообщение</h2>
+  <br>
+  <%= form_for @post do |f| %>
+    <p>
+      <%= f.label "Заголовок" %><br>
+      <%=h f.text_field :title %> 
+    </p>
+    <p>
+      <%= f.label "Текст" %><br>
+      <%=h f.text_area :body %> 
+    </p>
+    <p>
+      <%= f.label "Сыылка на Youtube видео" %><br>
+      <%= f.text_area :video %> 
+    </p>
+    <p>
+      <%= f.submit "Создать" %>
+    </p>
+  <% end %>
+<br>
