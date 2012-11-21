@@ -1,5 +1,3 @@
-
-    
     <% @posts.each_slice(3) do |slice| %>
       <div class = "cols">
        
@@ -23,7 +21,6 @@
         <% end %>
       </div>
     <% end %>
-
 
  <% if current_user && current_user.try(:admin?) %> 
  <br>

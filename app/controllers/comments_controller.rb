@@ -1,25 +1,23 @@
 class CommentsController < ApplicationController
+   
     before_filter :authenticate_user!, :only => [:create, :destroy, :new]	
 
-	def new
-		redirect_to root_path unless user_signed_in? 
-	    @comment = Comment.new
-	   
+	def new 
+	  @comment = Comment.new
 	end
 
 	def show
-      @comments = Comment.find_by_post_id(params[:post_id])
+      @comments = post.comments.find(params[:post_id])
 	end
 	
 	def create
       @comment = Comment.new(params[:comment])
 	  @comment.user_id = current_user.id
-      render action: "new" 
+	  redirect_to @post if @comment.save 
 	end
 
 	def destroy
-      @c = Comment.find(params[:id])
-      @c.destroy
-      
+      redirect_to @post if current_user.comments.find(params[:id]).destroy
 	end
+
 end
