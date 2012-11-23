@@ -7,9 +7,8 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'devise'
-gem 'hpricot'
-gem 'rails-gallery'
 gem 'carrierwave', '0.5.4'
+gem 'haml-rails'
 gem 'mini_magick'
 
 

@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     before_filter :authenticate_user!, :only => [:create, :destroy, :new]	
 
 	def new 
-	  @comment = Comment.new
+      @comment = Comment.new
 	end
 
 	def show
@@ -13,11 +13,13 @@ class CommentsController < ApplicationController
 	def create
       @comment = Comment.new(params[:comment])
 	  @comment.user_id = current_user.id
-	  redirect_to @post if @comment.save 
+	  redirect_to posts_path if @comment.save 
 	end
 
 	def destroy
-      redirect_to @post if current_user.comments.find(params[:id]).destroy
+      @c = Comment.find(params[:id])
+      @c.destroy if current_user.admin? or current_user.id == @c.user_id
+      redirect_to posts_path
 	end
 
 end
