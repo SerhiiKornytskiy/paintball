@@ -39,7 +39,7 @@ class AlbumsController < ApplicationController
   protected
 
   def find_album
-    @album = Album.find(params[:id])
+    @album = Album.where('id = ?', params[:id]).first
   end
 
 end

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 	end
 
 	def show
-      @comments = post.comments.find(params[:post_id])
+      @comments = post.comments.where('post_id = ?', params[:post_id])
 	end
 	
 	def create
