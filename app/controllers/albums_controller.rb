@@ -16,8 +16,8 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(params[:album])
-    redirect_to @album if @album.save
+    flash[:error] = "Choose name for album" unless Album.new(params[:album]).save
+    redirect_to albums_path
   end
 
   def edit
@@ -31,8 +31,7 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    @album.destroy
-    flash[:notice] = "Successfully destroyed Album."
+    flash[:notice] = "Successfully destroyed Album." if @album.destroy
     redirect_to albums_path
   end
   

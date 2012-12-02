@@ -54,7 +54,17 @@
       </div>
     </div>
     <div class="main">
-     <%= yield %>
+
+      <% if flash[:notice] %>
+      <p class="flash-error" style = "background-color: blue;"><%= flash[:notice] %></p>
+      <% end %>
+
+      <% if flash[:error] %>
+      <p class="flash-error" style = "background-color: red;"><%= flash[:error] %></p>
+      <% end %>
+
+      <%= yield %>
+
         <div class="cl">&nbsp;</div>
       </div>
       
