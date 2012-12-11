@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-  before_filter :find_post, :only => [:edit, :update, :destroy]
+  before_filter :find_photo, :only => [:edit, :update, :destroy]
 
   def new
     @photo = Photo.new(:album_id => params[:album_id])
@@ -26,8 +26,8 @@ class PhotosController < ApplicationController
 
   protected
 
-  def find_post
-    @photo = Photo.find(params[:id])
+  def find_photo
+    @photo = Photo.where(' id = ?', params[:id]).first
   end  
 
 end
