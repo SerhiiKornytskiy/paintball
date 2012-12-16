@@ -26,15 +26,21 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    current_user.posts.find(params[:id]).destroy
-    flash[:notice] = "Post deleted"
-    redirect_to(:back) 
+    @post = current_user.posts.find(params[:id]) if current_user.admin?
+    if @post
+      @post.destroy
+      flash[:notice] = "Post deleted"
+      redirect_to posts_path 
+    else
+      flash[:notice] = "Post not found"
+      redirect_to posts_path 
+    end
   end
 
   def edit
     unless @post
       flash[:error] = "Post not found"
-      redirect :action => :index
+      redirect_to root_path
     end
   end
 
