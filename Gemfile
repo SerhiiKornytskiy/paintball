@@ -28,6 +28,7 @@ end
 
 
 group :test do
+  gem 'shoulda'
   gem 'capybara'
   gem 'factory_girl_rails'
 end
