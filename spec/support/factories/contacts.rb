@@ -1,5 +1,15 @@
 # spec/factories/contacts.rb
 FactoryGirl.define do
+  
+  factory :photo do
+    image 'C:\Sites\paintball\public\uploads\photo\image\33.jpg'
+    name 'noname'
+  end
+
+  factory :album do
+    id 3
+    name "some_name"
+  end  
 
   factory :comment do
     user_id 3
@@ -8,6 +18,13 @@ FactoryGirl.define do
   end  
 
   factory :invalid_comment, parent: :comment do
+    id 3
+    user_id 3
+    post_id 28
+    content ""
+  end  
+
+  factory :blank_comment, parent: :comment do
     user_id 3
     post_id nil
     content ""

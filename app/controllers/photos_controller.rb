@@ -9,7 +9,12 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(params[:photo])
-    redirect_to albums_path if @photo.save
+    if @photo.save
+      redirect_to albums_path 
+    else  
+      redirect_to albums_path 
+      flash[:error] = "Fill in name and add photo."
+    end
   end
 
   def edit

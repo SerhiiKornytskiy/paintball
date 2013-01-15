@@ -10,6 +10,7 @@ gem 'devise'
 gem 'carrierwave', '0.5.4'
 gem 'haml-rails'
 gem 'mini_magick'
+gem 'kaminari'
 
 
 

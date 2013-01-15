@@ -11,12 +11,14 @@ describe Comment do
     @post_message = @admin.posts.create(@valid_attr)
     @comment = FactoryGirl.attributes_for(:comment)
     @invalid_comment = FactoryGirl.attributes_for(:invalid_comment)
+    @blank_comment = FactoryGirl.attributes_for(:blank_comment)
   end  
 
   describe "validation" do
-    it "should have content" do
+    it "should have nessesary fields" do
       @post_message.comments.create(@comment).should be_valid
       @post_message.comments.create(@invalid_comment).should_not be_valid
+      @post_message.comments.create(@blank_comment).should_not be_valid
     end  
 
     it "has associations" do

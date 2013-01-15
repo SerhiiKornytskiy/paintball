@@ -51,7 +51,7 @@ describe PostsController do
 
     it "creates valid post" do
       lambda  do
-        post :create, :post => @post
+        post :create, post: @post
       end.should change(Post, :count).by(1)
       response.should redirect_to(posts_path)
       flash[:notice].should_not be_nil
