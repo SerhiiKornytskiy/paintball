@@ -204,7 +204,7 @@ h1#logo span {
 	overflow:hidden;
 }
 .slider-holder {
-	position:relative;
+	position: center;
 	width:980px;
 	height:300px;
 	overflow:hidden;
